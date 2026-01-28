@@ -38,6 +38,10 @@ jobs:
            with:
               key: ${{ secrets.SSH_KEY }}
               known_hosts: "unnecessary"
+              config: |
+                 Host *
+                   PubkeyAcceptedAlgorithms +ssh-rsa
+                   HostKeyAlgorithms +ssh-rsa
 
          - name: Adding Known Hosts
            run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
